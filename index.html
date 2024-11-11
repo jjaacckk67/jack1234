@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLB Stats Visualizer</title>
+
+    <!-- PyScript library -->
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <!-- Use py-env to load pandas and plotly from PyPi -->
+    <py-env>
+        - pandas
+        - plotly
+    </py-env>
+
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f8; }
+        h1 { text-align: center; font-size: 2em; }
+        #plot { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>MLB Stats Visualizer</h1>
+
+    <!-- PyScript code for running Python -->
+    <py-script>
+        import pandas as pd
+        import plotly.express as px
+
+        # Use the raw URL of the CSV file from GitHub
+        data_hitting = pd.read_excel("https://raw.githubusercontent.com/your-username/mlb-stats-visualizer/main/your_baseball_data.csv.xlsx", sheet_name="Hitting")
+        data_pitching = pd.read_excel("https://raw.githubusercontent.com/your-username/mlb-stats-visualizer/main/your_baseball_data.csv.xlsx", sheet_name="Pitching")
+
+        # Example column names for x_stat and y_stat (use the correct ones from your data)
+        x_stat = "some_column_name_x"  # Replace with actual column name
+        y_stat = "some_column_name_y"  # Replace with actual column name
+
+        # Create the plot using Plotly
+        fig = px.scatter(data_frame=data_hitting, x=x_stat, y=y_stat, color="Team", title="MLB Stats Visualizer")
+
+        # Show the plot
+        fig.show()
+    </py-script>
+
+</body>
+</html>
